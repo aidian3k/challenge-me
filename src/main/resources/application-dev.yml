@@ -1,0 +1,15 @@
+spring:
+  liquibase:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+

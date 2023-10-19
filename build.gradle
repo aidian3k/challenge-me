@@ -1,0 +1,97 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.1.4'
+    id 'io.spring.dependency-management' version '1.1.3'
+    id 'org.jetbrains.kotlin.jvm' version '1.9.20-Beta2'
+}
+
+group = 'ee.pw'
+version = '0.0.1-SNAPSHOT'
+
+java {
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2022.0.4")
+}
+
+dependencies {
+    // SpringBoot
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // Database
+    implementation 'org.hibernate.orm:hibernate-core:6.0.0.Final'
+    implementation 'org.hibernate.common:hibernate-commons-annotations:6.0.0.Final'
+    implementation 'org.hibernate.validator:hibernate-validator:8.0.0.Final'
+    implementation 'org.liquibase:liquibase-core'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // Assertions libraries
+    testImplementation 'io.rest-assured:rest-assured'
+    testImplementation 'io.rest-assured:rest-assured-all'
+    testImplementation 'org.assertj:assertj-core'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:postgresql'
+
+    //AspectJ
+    implementation 'org.springframework:spring-aop:5.3.21'
+    implementation 'org.aspectj:aspectjweaver:1.9.7'
+
+    // Google Guava
+    implementation 'com.google.guava:guava:31.1-jre'
+
+    // Mapper
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
+    // Vavr
+    implementation 'io.vavr:vavr:0.10.4'
+
+    // Jwt token
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
+    // Amazon
+    implementation 'com.amazonaws:aws-java-sdk-s3:1.12.232'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
+}

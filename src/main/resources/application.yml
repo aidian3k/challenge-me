@@ -1,0 +1,28 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 'something'
+            client-secret: 'something'
+            scope:
+              - profile
+              - email
+
+app:
+  token:
+    constants:
+      shortTokenExpirationLength: 15
+      refreshTokenExpirationLength: 1440
+      tokenSecretKey: eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY5NzM2MjE3MCwiaWF0IjoxNjk3MzYyMTcwfQ.f_78jb1fINTUzW-am-NHrtqUCRp1u5rPd_Ov0V8fGsf8pZVBM4Bic_ByEfuxDZl9Mg-R3t7iZW7gSYO4OTlpew
+
+  oauth2:
+    redirect-url: 'something'
+    failure-url: 'something'
+
+logging:
+  level:
+    com.example.notehub: DEBUG
+    org.springframework.web.filter: DEBUG
+
